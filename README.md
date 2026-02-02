@@ -170,7 +170,18 @@ PostgreSQL数据库位于 /var/lib/postgresql/*/main/base
 
 ![](./9.png)
 
-## 三、参考
+## 三、Threat Models with Chinese Characteristics
+
+fnOS is a proprietary operating system developed in China and built on Debian, primarily targeting NAS use cases. According to multiple internet-wide scanning engines, more than 300,000 distinct public IP addresses are currently running fnOS, resulting in a sizable and highly exposed attack surface. In stark contrast to this deployment scale is the level of security awareness demonstrated by the fnOS technical team. When the community initially disclosed evidence of real-world compromises, the official response was to attribute the issue to “users employing insecure HTTP transport,” as if man-in-the-middle attacks represented the full extent of their threat model.
+
+This explanation was quickly eclipsed by a more complete—and considerably less flattering—set of findings from community researchers. The system was shown to contain an arbitrary file read vulnerability (path traversal) that had remained unpatched for over a month, along with a command execution flaw reachable when combined with authentication bypass. Chained together, these issues formed a reliable attack path capable of fully compromising affected systems.
+
+After the attack chain was fully reproduced and the technical details could no longer be ignored, fnOS did not opt for transparency, coordinated disclosure, or a structured vulnerability remediation process. Instead, it adopted a crisis-response approach with distinctly localized characteristics: reclassifying security research and vulnerability disclosure as “rumor spreading,” and publicly threatening to take action against the users involved.
+
+At this point, the incident ceased to be merely a vulnerability in a NAS product. It became a case study in security capability, responsibility, and corporate posture.
+
+## 四、参考
 
 - [fnos 恶意程序分析 - 攻略分享 飞牛私有云论坛 fnOS](https://club.fnnas.com/forum.php?mod=viewthread&tid=53230)
 - [公网使用飞牛 nas 的一些安全使用小提示--感谢飞牛官方团队](https://v2ex.com/t/1189392)
+
